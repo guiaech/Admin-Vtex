@@ -1,6 +1,6 @@
 {
   "admin.app.example": {
-    "component": "adminExample",
+    "component": "LeadsList",
     "path": "/admin/app/iotraining"
   },
   "admin.app.otherexample": {
