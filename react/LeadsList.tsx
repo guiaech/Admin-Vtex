@@ -4,7 +4,7 @@ import api from './api'
 
 // import 'vtex-tachyons'
 
-interface LeadsList {}
+interface LeadsList { }
 
 interface Leads {
   leads: string
@@ -13,9 +13,10 @@ interface Leads {
   name: string
   number: string
   recado: string
+  compra: string
 }
 
-const LeadsList: StorefrontFunctionComponent<LeadsList> = ({}) => {
+const LeadsList: StorefrontFunctionComponent<LeadsList> = ({ }) => {
   const [leads, setLeads] = useState<Leads[]>([])
 
   async function getLeads() {
@@ -53,24 +54,28 @@ const LeadsList: StorefrontFunctionComponent<LeadsList> = ({}) => {
                   <th className="bg-white fw6 tl bb b--black-20 pt2">
                     Data de Cadastro
                   </th>
-                  <th className="bg-white fw6 tl bb b--black-20 pt2">recado</th>
+                  <th className="bg-white fw6 tl bb b--black-20 pt2">Recado</th>
+                  <th className="bg-white fw6 tl bb b--black-20 pt2">
+                    Primeira Compra
+                  </th>
                 </tr>
               </thead>
 
               <tbody className="lh-copy">
                 {leads.length > 0
                   ? leads.map((lead) => (
-                      <tr className="stripe-dark bb b--black-20" key={lead.id}>
-                        <td className="tl bb b--black-20 pt2">{lead.id}</td>
-                        <td className="tl bb b--black-20 pt2">{lead.name}</td>
-                        <td className="tl bb b--black-20 pt2">{lead.number}</td>
-                        <td className="tl bb b--black-20 pt2">
-                          {lead.empresa}
-                        </td>
-                        <td className="tl bb b--black-20 pt2">{lead.leads}</td>
-                        <td className="tl bb b--black-20 pt2">{lead.recado}</td>
-                      </tr>
-                    ))
+                    <tr className="stripe-dark bb b--black-20" key={lead.id}>
+                      <td className="tl bb b--black-20 pt2">{lead.id}</td>
+                      <td className="tl bb b--black-20 pt2">{lead.name}</td>
+                      <td className="tl bb b--black-20 pt2">{lead.number}</td>
+                      <td className="tl bb b--black-20 pt2">
+                        {lead.empresa}
+                      </td>
+                      <td className="tl bb b--black-20 pt2">{lead.leads}</td>
+                      <td className="tl bb b--black-20 pt2">{lead.recado}</td>
+                      <td className="tl bb b--black-20 pt2">{lead.compra}</td>
+                    </tr>
+                  ))
                   : ''}
               </tbody>
             </table>
@@ -85,7 +90,7 @@ LeadsList.schema = {
   title: 'editor.leadslist.title',
   description: 'editor.leadslist.description',
   type: 'object',
-  properties: {},
+  properties: { },
 }
 
 export default LeadsList
